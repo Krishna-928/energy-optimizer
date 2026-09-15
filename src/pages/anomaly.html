@@ -1,0 +1,143 @@
+<div class="page-header">
+  <h1>Anomaly Detection</h1>
+  <p>ML-powered detection of performance deviations across all renewable assets.</p>
+</div>
+
+<!-- Summary Bar -->
+<div class="grid-4 mb-24" id="anomalyKpis"></div>
+
+<!-- Top Charts Row -->
+<div class="grid-2 mb-24">
+  <!-- Severity Timeline -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Anomaly Severity Over Time</div>
+      <div class="card-subtitle">Critical / High / Medium counts — last 7 days</div>
+    </div>
+    <div class="chart-wrap">
+      <canvas id="anomalySeverityTrendChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Confidence Distribution -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Detection Confidence Distribution</div>
+      <div class="card-subtitle">Histogram of ML confidence scores across all anomalies</div>
+    </div>
+    <div class="chart-wrap">
+      <canvas id="anomalyConfidenceHistChart"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- Anomaly Table -->
+<div class="card mb-24">
+  <div class="card-header">
+    <div>
+      <div class="card-title">Active Anomalies</div>
+      <div class="card-subtitle">Ranked by confidence score and severity</div>
+    </div>
+    <div class="flex gap-8">
+      <div class="tabs" id="anomalyFilterTabs" style="margin-bottom:0;">
+        <button class="tab-btn active" data-filter="all">All</button>
+        <button class="tab-btn" data-filter="critical">Critical</button>
+        <button class="tab-btn" data-filter="high">High</button>
+        <button class="tab-btn" data-filter="medium">Medium</button>
+      </div>
+    </div>
+  </div>
+  <div style="overflow-x:auto;">
+    <table class="data-table" id="anomalyTable">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Asset</th>
+          <th>Type</th>
+          <th>Metric</th>
+          <th>Expected</th>
+          <th>Actual</th>
+          <th>Deviation</th>
+          <th>Confidence</th>
+          <th>Severity</th>
+          <th>Status</th>
+          <th>Detected</th>
+        </tr>
+      </thead>
+      <tbody id="anomalyTableBody"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Anomaly Detail + Time Series -->
+<div class="grid-2 mb-24">
+  <!-- Detail Panel -->
+  <div class="card" id="anomalyDetail">
+    <div class="card-header">
+      <div class="card-title">Anomaly Detail</div>
+    </div>
+    <div id="anomalyDetailContent">
+      <p style="color:var(--text-muted);font-size:13px;padding:20px 0;">
+        Click on a row in the anomaly table to view details.
+      </p>
+    </div>
+  </div>
+
+  <!-- Time Series -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Performance Time Series</div>
+      <div class="card-subtitle" id="tsAssetLabel">Default view: WF-02 Capacity Factor</div>
+    </div>
+    <div class="chart-wrap">
+      <canvas id="anomalyTsChart"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- Detection Metrics -->
+<div class="grid-2 mb-24">
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Detection Method Performance</div>
+      <div class="card-subtitle">Precision & recall across detection algorithms</div>
+    </div>
+    <div class="chart-wrap">
+      <canvas id="detectionPerfChart"></canvas>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Anomaly by Asset Type</div>
+      <div class="card-subtitle">Distribution of detected anomalies</div>
+    </div>
+    <div class="chart-wrap">
+      <canvas id="anomalyDistChart"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- Deviation Scatter + Hourly Heatmap -->
+<div class="grid-2">
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Deviation vs Confidence Scatter</div>
+      <div class="card-subtitle">Each anomaly plotted by absolute deviation % vs detection confidence</div>
+    </div>
+    <div class="chart-wrap">
+      <canvas id="anomalyScatterChart"></canvas>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Anomaly Detection by Hour</div>
+      <div class="card-subtitle">Volume of anomalies detected per hour (rolling 24h)</div>
+    </div>
+    <div class="chart-wrap">
+      <canvas id="anomalyHourlyChart"></canvas>
+    </div>
+  </div>
+</div>
+

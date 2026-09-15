@@ -1,0 +1,91 @@
+# =============================================================================
+# HACKATHON SUBMISSION METADATA
+# =============================================================================
+# Instructions:
+#   - Fill in ALL required fields (marked with # REQUIRED)
+#   - Optional fields can be left as empty strings ""
+#   - Do NOT rename this file — the evaluation pipeline reads it by name
+#   - Use double quotes around all string values
+# =============================================================================
+
+team:
+  name: "energy-optimizer"             
+  track: "Sustainability"              
+  lead:
+    name: "Krishna Parmar"             
+    email: "D26DCE164@charusat.edu.in" 
+  members:
+    - name: "Jemin"                    
+      email: "26DCE027@charusat.edu.in"
+    - name: "Darpit"
+      email: "26DCE095@charusat.edu.in"
+    - name: "Priyansh"
+      email: "26DCE061@charusat.edu.in"
+
+submission:
+  title: "EnergyOS — Renewable Intelligence Platform"  # REQUIRED — Project display name
+
+  problem_statement: >                 # REQUIRED — 1-3 sentences. What problem? Who has it?
+    Renewable energy generation is inherently intermittent — solar output falls
+    when clouds pass or after sunset, and wind generation fluctuates with wind
+    speed. Grid operators must simultaneously forecast demand spikes, detect
+    underperforming assets, diagnose root causes across a mixed renewable fleet
+    (wind, solar, hydro, battery), and balance inter-regional power flow — all
+    under time pressure using disconnected tools, leading to unnecessary
+    curtailment, revenue loss, and avoidable grid instability.
+
+  solution_summary: >                  # REQUIRED — 1-3 sentences. What did you build?
+    EnergyOS is an AI-powered single-page web application that unifies five
+    intelligent modules — demand spike forecasting, load balancing, anomaly
+    detection, root cause analysis, and auto-generated operator briefs — into
+    one seamless grid operations platform. It features 36 fully populated
+    interactive charts across 6 pages and turns complex energy data into clear,
+    actionable decisions that help operators reduce renewable-energy curtailment
+    and improve overall grid efficiency.
+
+  key_features:                        # REQUIRED — List 3 to 5 specific features you implemented
+    - "AI-powered demand spike forecasting with 12h/24h/7-day windows, confidence intervals, spike event detection, model accuracy tracking (MAPE/RMSE), and forecasted generation-mix charts"
+    - "Intelligent load balancing engine with regional load vs capacity analysis, grid health radar, 7-day curtailment history, and prioritised one-click-approve balancing actions"
+    - "ML-powered anomaly detection across all renewable assets with severity trend charts, confidence histograms, per-asset time-series drill-down, and deviation-vs-confidence scatter plots"
+    - "Automated per-asset root cause analysis with fault trees, cause probability radar, output vs capacity charts, and targeted O&M recommendations"
+    - "Auto-generated operator briefs with executive summary, critical anomaly alerts, curtailment minimisation plan, action timeline, and revenue-impact projections"
+
+  tech_stack:
+    languages: ["HTML5", "CSS3", "JavaScript (ES6+)"]
+    frameworks: ["Vanilla JavaScript (modular IIFE pattern)", "Chart.js 4.4"]
+    ibm_technologies: ["IBM Bob (AI pair-programming used throughout development)"]
+    databases: ["No database — synthetic data layer (src/assets/js/core/data.js)"]
+    other: ["Python http.server (local serving)", "Git", "GitHub", "Chart.js CDN"]
+
+  what_we_are_most_proud_of: >         # Optional but recommended — guides judges to your best work
+    EnergyOS unifies five modules — forecasting, anomaly detection, root-cause
+    analysis, load balancing, and operator briefs — into one cohesive workflow
+    that normally requires five separate enterprise tools. Every single chart
+    panel (36 total across 6 pages) is fully populated with contextually
+    accurate synthetic data; no panel is left empty. The key achievement is
+    turning complex, multi-dimensional energy grid data into clear, ranked,
+    actionable operator decisions that can measurably reduce renewable-energy
+    curtailment and improve grid efficiency — all in a zero-dependency,
+    no-build-step client-side application.
+
+  known_limitations: >                 # Optional but recommended — be honest about gaps
+    Operator recommendations are AI-generated decision-support suggestions and
+    require human verification before being applied to a real power grid.
+    The prototype is not yet connected to SCADA systems, smart meters, IoT
+    sensors, or real renewable-energy equipment — all data is synthetically
+    simulated in the browser. There is no persistent backend storage; data
+    reseeds on every page refresh. The app must be served over HTTP (not
+    opened as a file:// URL) due to fetch() usage for page fragment loading.
+
+# =============================================================================
+# ARTIFACT LOCATIONS
+# These paths are relative to the repo root. Only change if you moved files.
+# =============================================================================
+artifacts:
+  source_code: "src/"
+  setup_guide: "docs/setup-guide.md"
+  architecture_doc: "docs/architecture.md"
+  demo_video: "demo/Demo_website.mp4"  # Local MP4 walkthrough video
+  live_demo: ""                        # NOT DEPLOYED — run locally via Python/Node
+  screenshots: "demo/screenshots/"
+  presentation: "presentation/"

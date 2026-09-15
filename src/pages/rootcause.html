@@ -1,0 +1,110 @@
+<div class="page-header">
+  <h1>Root Cause Analysis</h1>
+  <p>Automated fault tree analysis to identify underlying causes for each underperforming asset.</p>
+</div>
+
+<!-- Filter + Sort -->
+<div class="flex-between mb-24">
+  <div class="tabs" id="rcaFilterTabs">
+    <button class="tab-btn active" data-filter="all">All Assets</button>
+    <button class="tab-btn" data-filter="critical">Critical</button>
+    <button class="tab-btn" data-filter="degraded">Degraded</button>
+    <button class="tab-btn" data-filter="optimal">Optimal</button>
+  </div>
+  <div class="flex gap-8">
+    <button class="btn btn-outline btn-sm" id="generateRcaBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      Re-analyse
+    </button>
+  </div>
+</div>
+
+<!-- Asset KPIs -->
+<div class="grid-4 mb-24" id="rcaKpis"></div>
+
+<!-- Top Charts Row -->
+<div class="grid-2 mb-24">
+  <!-- Status Doughnut -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Asset Health Status Breakdown</div>
+      <div class="card-subtitle">Distribution of critical / degraded / optimal assets</div>
+    </div>
+    <div class="chart-wrap">
+      <canvas id="rcaStatusDonutChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Cause Probability Radar -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Cause Probability by Type</div>
+      <div class="card-subtitle">Average fault probability across generation types</div>
+    </div>
+    <div class="chart-wrap">
+      <canvas id="rcaCauseProbRadar"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- Efficiency Chart -->
+<div class="card mb-24">
+  <div class="card-header">
+    <div class="card-title">Asset Efficiency Comparison</div>
+    <div class="card-subtitle">Actual vs expected efficiency (%) per asset</div>
+  </div>
+  <div class="chart-wrap">
+    <canvas id="efficiencyChart"></canvas>
+  </div>
+</div>
+
+<!-- Asset RCA Cards -->
+<div class="section-title">Root Cause Findings by Asset</div>
+<div class="grid-2 mb-24" id="rcaCardGrid"></div>
+
+<!-- Cause Category + Type Efficiency -->
+<div class="grid-2 mb-24">
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Cause Category Distribution</div>
+      <div class="card-subtitle">Frequency of identified root cause categories</div>
+    </div>
+    <div class="chart-wrap">
+      <canvas id="causeCategoryChart"></canvas>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Asset Type vs Efficiency</div>
+      <div class="card-subtitle">Average efficiency by generation type</div>
+    </div>
+    <div class="chart-wrap">
+      <canvas id="typeEfficiencyChart"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- Output vs Capacity + Efficiency Trend -->
+<div class="grid-2">
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Output vs Capacity per Asset</div>
+      <div class="card-subtitle">Actual MW output against rated capacity</div>
+    </div>
+    <div class="chart-wrap">
+      <canvas id="rcaOutputCapacityChart"></canvas>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Efficiency Trend — Last 7 Days</div>
+      <div class="card-subtitle">Fleet-average daily efficiency rolling window</div>
+    </div>
+    <div class="chart-wrap">
+      <canvas id="rcaEfficiencyTrendChart"></canvas>
+    </div>
+  </div>
+</div>
+

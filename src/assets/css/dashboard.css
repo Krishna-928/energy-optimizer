@@ -1,0 +1,271 @@
+/* ============================================================
+   EnergyOS — Dashboard-specific styles
+   ============================================================ */
+
+/* ── Asset Grid ─────────────────────────────────────────────── */
+.asset-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.asset-tile {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px;
+  cursor: pointer;
+  transition: border-color var(--transition), transform var(--transition);
+  position: relative;
+}
+
+.asset-tile:hover {
+  border-color: var(--border-light);
+  transform: translateY(-1px);
+}
+
+.asset-tile.anomaly { border-color: rgba(239,68,68,0.4); }
+.asset-tile.warning { border-color: rgba(245,158,11,0.4); }
+.asset-tile.ok      { border-color: rgba(74,222,128,0.2); }
+
+.asset-name {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.asset-metric {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+
+.asset-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.asset-efficiency {
+  height: 4px;
+  border-radius: 2px;
+  background: var(--border);
+  overflow: hidden;
+}
+
+.asset-efficiency-fill {
+  height: 100%;
+  border-radius: 2px;
+}
+
+/* ── Map-like Grid view ─────────────────────────────────────── */
+.grid-map {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  min-height: 300px;
+  position: relative;
+}
+
+.grid-map-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ── Live timeline ──────────────────────────────────────────── */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.timeline-item {
+  display: flex;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+
+.timeline-item:last-child { border-bottom: none; }
+
+.timeline-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+
+.timeline-dot.green  { background: var(--green); box-shadow: 0 0 6px var(--green-glow); }
+.timeline-dot.amber  { background: var(--amber); box-shadow: 0 0 6px var(--amber-glow); }
+.timeline-dot.red    { background: var(--red);   box-shadow: 0 0 6px var(--red-glow); }
+.timeline-dot.blue   { background: var(--accent); }
+
+.timeline-content { flex: 1; }
+.timeline-title   { font-size: 13px; font-weight: 500; color: var(--text); }
+.timeline-meta    { font-size: 11.5px; color: var(--text-muted); margin-top: 2px; }
+.timeline-time    { font-size: 11px; color: var(--text-dim); white-space: nowrap; }
+
+/* ── Gauge-like arc element ─────────────────────────────────── */
+.gauge-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.gauge-canvas-wrap {
+  position: relative;
+}
+
+.gauge-label-inside {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.gauge-label-inside .gauge-val {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+  display: block;
+  line-height: 1;
+}
+
+.gauge-label-inside .gauge-unit {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* ── Recommendation Chip ────────────────────────────────────── */
+.rec-chip {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px;
+  background: var(--bg-card-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 8px;
+  transition: border-color var(--transition);
+}
+
+.rec-chip:hover { border-color: var(--border-light); }
+
+.rec-chip-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.rec-chip-icon.green  { background: var(--green-glow);  color: var(--green); }
+.rec-chip-icon.amber  { background: var(--amber-glow);  color: var(--amber); }
+.rec-chip-icon.red    { background: var(--red-glow);    color: var(--red); }
+.rec-chip-icon.blue   { background: var(--accent-glow); color: var(--accent); }
+.rec-chip-icon svg    { width: 16px; height: 16px; }
+
+.rec-chip-body { flex: 1; }
+.rec-chip-title { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+.rec-chip-desc  { font-size: 12px; color: var(--text-muted); }
+
+/* ── Root cause tree ────────────────────────────────────────── */
+.rca-tree { font-size: 13px; }
+
+.rca-node {
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  background: var(--bg-card-alt);
+  border: 1px solid var(--border);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.rca-node.root-node {
+  background: var(--bg-card);
+  border-color: var(--border-light);
+}
+
+.rca-children {
+  margin-left: 24px;
+  border-left: 1px dashed var(--border-light);
+  padding-left: 12px;
+  margin-bottom: 6px;
+}
+
+.rca-connector {
+  font-size: 11px;
+  color: var(--text-dim);
+  margin-bottom: 4px;
+  padding-left: 4px;
+}
+
+/* ── Brief sections ─────────────────────────────────────────── */
+.brief-section {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.brief-section h3 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brief-section h3 svg { width: 16px; height: 16px; }
+
+.brief-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+
+.brief-row:last-child { border-bottom: none; }
+.brief-row-label { color: var(--text-muted); }
+.brief-row-value { color: var(--text); font-weight: 500; }
+
+/* ── Curtailment plan bar ───────────────────────────────────── */
+.curtail-plan {
+  display: grid;
+  grid-template-columns: 1fr 80px 80px 80px;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 12.5px;
+}
+
+.curtail-plan:last-child { border-bottom: none; }
+.curtail-plan-header { font-weight: 600; color: var(--text-muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; }
+.curtail-asset { font-weight: 500; color: var(--text); }
+.curtail-val   { text-align: right; }

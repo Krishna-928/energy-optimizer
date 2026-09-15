@@ -1,0 +1,147 @@
+<div class="page-header">
+  <h1>Operator Optimisation Brief</h1>
+  <p>Auto-generated integrated brief with curtailment minimisation plan and recommended actions.</p>
+</div>
+
+<!-- Brief Actions Bar -->
+<div class="flex-between mb-24">
+  <div>
+    <div class="flex-center gap-12">
+      <span class="badge badge-green">Auto-Generated</span>
+      <span style="color:var(--text-muted);font-size:12px;" id="briefGeneratedAt">Generated: --</span>
+    </div>
+  </div>
+  <div class="flex gap-8">
+    <button class="btn btn-outline btn-sm" id="printBriefBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      Print
+    </button>
+    <button class="btn btn-primary btn-sm" id="regenerateBriefBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+      Regenerate
+    </button>
+  </div>
+</div>
+
+<!-- Summary KPI Row -->
+<div class="grid-4 mb-24" id="briefKpiGrid"></div>
+
+<!-- Summary Charts Row -->
+<div class="grid-2 mb-24">
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Fleet Status Overview</div>
+      <div class="card-subtitle">Asset health distribution at brief generation time</div>
+    </div>
+    <div class="chart-wrap">
+      <canvas id="briefFleetStatusChart"></canvas>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Curtailment Risk by Asset (MW)</div>
+      <div class="card-subtitle">Estimated MW at risk for each underperforming asset</div>
+    </div>
+    <div class="chart-wrap">
+      <canvas id="briefCurtailRiskChart"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- Executive Summary -->
+<div class="brief-section">
+  <h3>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+    Executive Summary
+  </h3>
+  <div id="briefSummaryRows"></div>
+</div>
+
+<!-- Critical Alerts -->
+<div class="brief-section">
+  <h3>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    Critical Anomalies Requiring Immediate Attention
+  </h3>
+  <div id="briefAnomalies"></div>
+</div>
+
+<!-- Curtailment Minimisation Plan -->
+<div class="brief-section">
+  <h3>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+    Curtailment Minimisation Plan
+  </h3>
+  <div class="curtail-plan curtail-plan-header">
+    <span>Asset</span>
+    <span class="curtail-val">Current MW</span>
+    <span class="curtail-val">Target MW</span>
+    <span class="curtail-val">Est. Saving</span>
+  </div>
+  <div id="curtailmentPlanRows"></div>
+</div>
+
+<!-- Load Balancing Actions -->
+<div class="brief-section">
+  <h3>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+    Priority Load-Balancing Actions
+  </h3>
+  <div id="briefActions"></div>
+</div>
+
+<!-- Forecast Impact Chart -->
+<div class="brief-section">
+  <h3>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+    Demand Forecast vs Available Capacity (Next 12h)
+  </h3>
+  <div class="chart-wrap">
+    <canvas id="briefForecastChart"></canvas>
+  </div>
+</div>
+
+<!-- Curtailment Savings Chart -->
+<div class="grid-2 mb-24">
+  <div class="brief-section" style="margin-bottom:0;">
+    <h3>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      Energy Recovery by Asset
+    </h3>
+    <div class="chart-wrap">
+      <canvas id="recoveryChart"></canvas>
+    </div>
+  </div>
+  <div class="brief-section" style="margin-bottom:0;">
+    <h3>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/><path d="M12 8v4l3 3"/></svg>
+      Action Timeline
+    </h3>
+    <div id="briefTimeline"></div>
+  </div>
+</div>
+
+<!-- Revenue Impact + Anomaly Mix -->
+<div class="grid-2">
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Estimated Revenue Impact by Action</div>
+      <div class="card-subtitle">Projected £ savings per curtailment fix</div>
+    </div>
+    <div class="chart-wrap">
+      <canvas id="briefRevenueChart"></canvas>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Anomaly Type Breakdown</div>
+      <div class="card-subtitle">Distribution of active anomaly categories</div>
+    </div>
+    <div class="chart-wrap">
+      <canvas id="briefAnomalyMixChart"></canvas>
+    </div>
+  </div>
+</div>
+

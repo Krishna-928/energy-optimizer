@@ -1,0 +1,88 @@
+<div class="page-header">
+  <h1>Operations Dashboard</h1>
+  <p>Real-time overview of all renewable assets, grid health, and active alerts.</p>
+</div>
+
+<!-- KPI Row -->
+<div class="grid-4 mb-24" id="kpiGrid">
+  <!-- Populated by JS -->
+</div>
+
+<!-- Main Charts Row -->
+<div class="grid-2 mb-24">
+  <!-- Grid Demand Chart -->
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="card-title">Live Grid Demand</div>
+        <div class="card-subtitle">24-hour demand vs. renewable supply (MW)</div>
+      </div>
+      <span class="badge badge-green">Live</span>
+    </div>
+    <div class="chart-wrap">
+      <canvas id="demandChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Asset Mix Doughnut -->
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="card-title">Generation Mix</div>
+        <div class="card-subtitle">Current active output by source (MW)</div>
+      </div>
+    </div>
+    <div class="chart-wrap">
+      <canvas id="genMixChart"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- Asset Grid + Events -->
+<div class="grid-2 mb-24">
+  <!-- Asset Health Grid -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Asset Health Overview</div>
+      <span class="badge badge-amber" id="degradedCount">Loading…</span>
+    </div>
+    <div class="asset-grid" id="assetGrid">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+
+  <!-- Event Timeline -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Live Event Feed</div>
+      <button class="btn btn-sm btn-outline" id="clearEventsBtn">Clear</button>
+    </div>
+    <div class="timeline" id="eventTimeline">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+</div>
+
+<!-- Regional Load + Forecast Mini -->
+<div class="grid-2">
+  <!-- Regional Load Bar -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Regional Load Distribution</div>
+      <div class="card-subtitle">% of capacity utilised</div>
+    </div>
+    <div id="regionalLoad"><!-- Populated by JS --></div>
+  </div>
+
+  <!-- 6-hr Forecast -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">6-Hour Demand Outlook</div>
+      <div class="card-subtitle">Predicted demand with confidence band (MW)</div>
+    </div>
+    <div class="chart-wrap">
+      <canvas id="forecastMiniChart"></canvas>
+    </div>
+  </div>
+</div>
+

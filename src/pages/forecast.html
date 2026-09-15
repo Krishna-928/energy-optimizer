@@ -1,0 +1,133 @@
+<div class="page-header">
+  <h1>Demand Spike Forecasting</h1>
+  <p>AI-driven load prediction with confidence intervals and spike event detection.</p>
+</div>
+
+<!-- Forecast Controls -->
+<div class="flex-between mb-24">
+  <div class="tabs" id="forecastTabs">
+    <button class="tab-btn active" data-tab="12h">12-Hour</button>
+    <button class="tab-btn" data-tab="24h">24-Hour</button>
+    <button class="tab-btn" data-tab="7d">7-Day</button>
+  </div>
+  <div class="flex gap-8">
+    <button class="btn btn-outline btn-sm" id="exportForecastBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Export
+    </button>
+    <button class="btn btn-primary btn-sm" id="runForecastBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      Run Forecast
+    </button>
+  </div>
+</div>
+
+<!-- KPIs -->
+<div class="grid-4 mb-24" id="forecastKpis"></div>
+
+<!-- Model Accuracy + Confidence Band Charts -->
+<div class="grid-2 mb-24">
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Model Accuracy — Last 7 Days</div>
+      <div class="card-subtitle">MAPE % vs actual demand (lower is better)</div>
+    </div>
+    <div class="chart-wrap">
+      <canvas id="forecastAccuracyChart"></canvas>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Confidence Band Width Over Time</div>
+      <div class="card-subtitle">Upper − Lower interval width (MW) per forecast hour</div>
+    </div>
+    <div class="chart-wrap">
+      <canvas id="forecastBandWidthChart"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- Forecast Chart -->
+<div class="card mb-24">
+  <div class="card-header">
+    <div>
+      <div class="card-title">Demand Forecast vs Historical</div>
+      <div class="card-subtitle">Shaded area = 95% confidence interval</div>
+    </div>
+    <span class="badge badge-blue" id="forecastModelBadge">LSTM Model v2.3</span>
+  </div>
+  <div class="chart-wrap">
+    <canvas id="forecastMainChart"></canvas>
+  </div>
+</div>
+
+<!-- Spike Events + Confidence Table -->
+<div class="grid-2 mb-24">
+  <!-- Spike Events -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Predicted Spike Events</div>
+      <span class="badge badge-red" id="spikeBadge">3 High Priority</span>
+    </div>
+    <div id="spikeEventsList"></div>
+  </div>
+
+  <!-- Hourly Breakdown Table -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Hourly Forecast Breakdown</div>
+      <div class="card-subtitle">Next 12 hours</div>
+    </div>
+    <div style="overflow-x:auto;">
+      <table class="data-table" id="forecastTable">
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Predicted</th>
+            <th>Lower</th>
+            <th>Upper</th>
+            <th>Confidence</th>
+            <th>Risk</th>
+          </tr>
+        </thead>
+        <tbody id="forecastTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Weekly Pattern Comparison -->
+<div class="card mb-24">
+  <div class="card-header">
+    <div class="card-title">Weekly Demand Pattern Comparison</div>
+    <div class="card-subtitle">Historical vs forecasted daily peak demand (MW)</div>
+  </div>
+  <div class="chart-wrap">
+    <canvas id="weeklyPatternChart"></canvas>
+  </div>
+</div>
+
+<!-- Spike Hours Distribution + Source Mix Forecast -->
+<div class="grid-2">
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Spike Probability by Hour of Day</div>
+      <div class="card-subtitle">Historical likelihood of demand spikes per hour</div>
+    </div>
+    <div class="chart-wrap">
+      <canvas id="spikeHourDistChart"></canvas>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Forecasted Generation Mix — Next 12h</div>
+      <div class="card-subtitle">Expected MW contribution by source type</div>
+    </div>
+    <div class="chart-wrap">
+      <canvas id="forecastGenMixChart"></canvas>
+    </div>
+  </div>
+</div>
+

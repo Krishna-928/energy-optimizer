@@ -1,0 +1,129 @@
+<div class="page-header">
+  <h1>Load Balancing Engine</h1>
+  <p>Automated recommendations for optimal inter-regional power flow and grid stability.</p>
+</div>
+
+<!-- KPIs -->
+<div class="grid-4 mb-24" id="lbKpis"></div>
+
+<!-- Grid Flow Visualisation + Actions -->
+<div class="grid-2 mb-24">
+  <!-- Regional Load Chart -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Regional Load vs Capacity</div>
+      <div class="card-subtitle">Live utilisation across 5 grid regions (%)</div>
+    </div>
+    <div class="chart-wrap">
+      <canvas id="regionalLoadChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Flow Sankey-style radar -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Grid Health Radar</div>
+      <div class="card-subtitle">Multi-dimension grid performance score</div>
+    </div>
+    <div class="chart-wrap">
+      <canvas id="gridRadarChart"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- Load Trend + Curtailment History -->
+<div class="grid-2 mb-24">
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Grid Load Trend — Last 24h</div>
+      <div class="card-subtitle">Total active load (MW) across all regions over time</div>
+    </div>
+    <div class="chart-wrap">
+      <canvas id="lbLoadTrendChart"></canvas>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Curtailment History — Last 7 Days</div>
+      <div class="card-subtitle">Daily curtailed energy (MWh) by region</div>
+    </div>
+    <div class="chart-wrap">
+      <canvas id="lbCurtailHistChart"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- Recommended Actions -->
+<div class="card mb-24">
+  <div class="card-header">
+    <div>
+      <div class="card-title">Recommended Load-Balancing Actions</div>
+      <div class="card-subtitle">Ranked by impact and urgency. Click Approve to apply.</div>
+    </div>
+    <div class="flex gap-8">
+      <button class="btn btn-outline btn-sm" id="approveAllBtn">Approve All</button>
+      <button class="btn btn-primary btn-sm" id="recalcBtn">Recalculate</button>
+    </div>
+  </div>
+  <div id="actionsList"></div>
+</div>
+
+<!-- Power Flow Imports/Exports -->
+<div class="grid-2 mb-24">
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Regional Import / Export (MW)</div>
+      <div class="card-subtitle">Current inter-regional power transfers</div>
+    </div>
+    <div class="chart-wrap">
+      <canvas id="importExportChart"></canvas>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Asset Dispatch Schedule</div>
+      <div class="card-subtitle">Planned dispatch for next 6 hours</div>
+    </div>
+    <div style="overflow-x:auto;">
+      <table class="data-table" id="dispatchTable">
+        <thead>
+          <tr>
+            <th>Asset</th>
+            <th>Type</th>
+            <th>Current MW</th>
+            <th>Scheduled MW</th>
+            <th>Action</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="dispatchTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Dispatch MW Stacked + Renewable Share -->
+<div class="grid-2">
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Dispatch by Asset Type — Current vs Scheduled</div>
+      <div class="card-subtitle">Aggregated MW per generation type</div>
+    </div>
+    <div class="chart-wrap">
+      <canvas id="lbDispatchTypeChart"></canvas>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Regional Renewable Share (%)</div>
+      <div class="card-subtitle">Proportion of load served by renewables per region</div>
+    </div>
+    <div class="chart-wrap">
+      <canvas id="lbRenewableShareChart"></canvas>
+    </div>
+  </div>
+</div>
+
